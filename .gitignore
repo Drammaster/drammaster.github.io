@@ -1,0 +1,9 @@
+# dependencies
+react-app/node_modules
+
+# production
+react-app/build
+
+# misc
+.DS_Store
+.env

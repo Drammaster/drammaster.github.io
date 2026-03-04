@@ -1,79 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!--Link to CSS file-->
-        <link rel="stylesheet" href="style.css">
-        <link rel="icon" type="image/svg+xml" href="id-card-regular.svg">
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <!--JS call-->
-        <script src="script.js"></script>
+  <head>
+    <!--Link to CSS file-->
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="id-card-regular.svg">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--Title-->
-        <header>
-            <div id="head-content">
-                <h1>Csaba Darazs</h1>
-                <a class="button" href="Csaba Darazs CV.pdf" target="_blank">View Resume</a>
-            </div>
-            <div id="overlay"></div>
-        </header>
+    <!-- load FontAwesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-p+k0VQxO+gq3qsbkYhTj+7LvGzFBl48wT7qS3h1zv0mZvE1QG+6J6z5YCROrGgS6NQ8tC4hP7pXeo9cG7oZ9Vg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-        <!--Main content-->
-        <main>
-
-            <!--About me section-->
-            <div id="aboutme">
-                <h2>About me</h2>
-                <div id="abouttext">
-                    A passionate computer science graduate from the University of Auckland with 4 years of experience working as a climbing instructor
-                    as part of a large team fulfilling various roles. With many years of university experience working with Python, SQL, HTML, CSS, JavaScript
-                    and C#, I am now looking to start my career in IT as a software developer or SalesForce developer.
-                </div>        
-            </div>
-
-            <!--Project section-->
-            <div id="proj">
-                <h2>Projects</h2>
-                <ul id="repo-list"></ul>
-            </div>
-
-            <!--Skills & Tools-->
-            <div id="skill-tool">
-                <!--Skills section-->
-                <div id="skills">
-                    <h2>Skills</h2>
-                    <ul id="skills-list">
-                        <li><div class="filler-js"><span>JavaScript</span></div></li>
-                        <li><div class="filler-ts"><span>TypeScript</span></div></li>
-                        <li><div class="filler-css"><span>Css</span></div></li>
-                        <li><div class="filler-html"><span>HTML</span></div></li>
-                        <li><div class="filler-reactjs"><span>React JS</span></div></li>
-                        <li><div class="filler-reactnative"><span>ReactNative</span></div></li>
-                        <li><div class="filler-nodejs"><span>NodeJs</span></div></li>
-                        <li><div class="filler-python"><span>Python</span></div></li>
-                        <li><div class="filler-sql"><span>Sql</span></div></li>
-                        <li><div class="filler-csharp"><span>C#</span></div></li>
-                    </ul>
-                </div>
-
-                <!--Tools section-->
-                <div id="tools">
-                    <h2>Tools</h2>
-                    <ul id="skills-list">
-                        <li><div class="filler-jira"><span>Jira</span></div></li>
-                        <li><div class="filler-vscode"><span>VScode</span></div></li>
-                        <li><div class="filler-trello"><span>Trello</span></div></li>
-                        <li><div class="filler-framer"><span>Framer</span></div></li>
-                        <li><div class="filler-github"><span>Github</span></div></li>
-                        <li><div class="filler-androidstudio"><span>Android Studio</span></div></li>
-                        <li><div class="filler-cypress"><span>cypress</span></div></li>
-                        <li><div class="filler-azure"><span>azure</span></div></li>
-                    </ul>
-                </div>
-            </div>
-
-        </main>
-    </body>
+    <!-- React and Babel via CDN -->
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+~
+    <!-- our React entrypoint -->
+    <script type="text/babel" src="app.js"></script>
+  </body>
 </html>

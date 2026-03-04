@@ -1,0 +1,262 @@
+:root {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    --light-grey: #f2f2f5;
+    --darker-grey: #666666;
+    --light-blue: rgba(33,125,187,0.8);
+    --transition-speed: 600ms;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    color: black;
+    background-color: white;
+}
+/*Header section*/
+
+header {
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+    top: 0;
+    z-index: 1;
+}
+
+#head-content {
+    display: grid;
+    place-items: center;
+    font-size: 50px;
+    height: auto;
+    background-image: url(../assets/4K-Tech-Background.jpg);
+    background-size: cover;
+}
+
+#head-content h1 {
+    font-family: Impact, Impact, sans-serif;
+    color: white;
+    z-index: 3;
+    margin-top: 2px;
+    margin-bottom: 0px;
+}
+
+header a {
+    text-decoration: none;
+    font-size: 16px;
+    z-index: 2;
+}
+
+.button {
+    display: inline-block;
+    color: #fff;
+    padding: 15px 25px;
+    border: 3px solid #fff;
+    border-radius: 30px;
+    transition: .5s ease all;
+    margin-bottom: 5px;
+}
+
+.button:hover {
+    color:#217dbb;
+    text-decoration:none;
+    background:#eee;
+}
+
+#overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: var(--light-blue);
+    z-index: 0;
+}
+
+/*Header section end*/
+
+
+main {
+    top: 175px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+/*Left side content*/
+#aboutme,
+#proj {
+    width: 99.4%;
+    overflow: hidden;
+    padding: 25px 5px;
+    display: grid;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+#aboutme {
+    border-bottom: 1px solid #dcd9d9;
+}
+
+#proj h2,
+#aboutme h2 {
+    text-align: center;
+}
+
+#abouttext {
+    padding: 0px 20%;
+}
+
+#repo-list {
+    margin: 0px 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-left: 0;
+}
+
+.repo_item {
+    flex: 1 1 290px;
+    list-style-type: none;
+    margin: 5px;
+    padding: 10px;
+    background-color: var(--light-grey);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    transition: var(--transition-speed);
+}
+
+.repo_item h3 {
+    margin-top: 0;
+}
+
+.repo_item svg {
+    width: 30px;
+    padding-top: 3px;
+    float: right;
+}
+
+.repo_item p {
+    margin-top: 5px;
+}
+
+.repo_item:hover {
+    transition: var(--transition-speed);
+    box-shadow: 5px 10px 10px grey;
+}
+
+.repo_item a {
+    text-decoration: none;
+    color: black;
+}
+
+#skill-tool {
+    margin: 0px 5.5% 20px 5.5%;
+    display: grid;
+    grid-template-columns: 49.65% 49.65%;
+    justify-content: space-between;
+}
+
+/*Tools and skills*/
+#skills,
+#tools {
+    width: 100%;
+    /*background-color: #f2f2f5;*/
+}
+
+#skills h2,
+#tools h2 {
+    text-align: center;
+}
+
+#skills-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-left: 0;
+    margin: 0px 10px;
+    padding-bottom: 10px;
+}
+
+#skills-list li {
+    text-align: center;
+    flex: 0 1 auto;
+    display: inline-block;
+    margin: 5px;
+    color: #ffffff;
+    background-color: var(--light-blue);
+    list-style: none;
+    cursor: default;
+    font-size: 12px;
+    padding: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 1300px) {
+
+    #head-content h1 {
+        font-size: 9vw;
+    }
+
+    .button {
+        padding: 15px 15px;
+    }
+
+    main {
+        grid-template-columns: 100%;
+    }
+
+    #abouttext {
+        padding: 0px 5%;
+    }
+
+    #skill-tool {
+        grid-template-columns: 99.3%;
+    }
+
+    #skills {
+        border-right: 0px;
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    :root {
+        font-size: 12px;
+    }
+
+    #head-content h1 {
+        font-size: 11vw;
+    }
+
+    .button {
+        padding: 15px 15px;
+    }
+
+    #head-content a {
+        font-size: 10px;
+    }
+
+    main {
+        top: 100px;
+    }
+
+    .repo_item svg {
+        width: 15px
+    }
+
+    .repo_item {
+        margin: 5px 0px;
+    }
+
+    #skills-list li {
+        font-size: 10px;
+        margin: 4px;
+        height: 25px;
+        line-height: 25px;
+    }
+}
