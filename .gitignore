@@ -1,8 +1,5 @@
-# dependencies
-react-app/node_modules
-
-# production
-react-app/build
+node_modules
+build
 
 # misc
 .DS_Store
