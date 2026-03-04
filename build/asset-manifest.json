@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.547eb229.css",
+    "main.js": "/static/js/main.b5d6064c.js",
+    "static/media/4K-Tech-Background.jpg": "/static/media/4K-Tech-Background.7ea06e9be007c762ab83.jpg",
+    "index.html": "/index.html",
+    "main.547eb229.css.map": "/static/css/main.547eb229.css.map",
+    "main.b5d6064c.js.map": "/static/js/main.b5d6064c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.547eb229.css",
+    "static/js/main.b5d6064c.js"
+  ]
+}
