@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './styles/style.css';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Container,
+  Box,
+  Link,
+} from '@mui/material';
 
 function visitorCount() {
   fetch('https://api.countapi.xyz/update/drammaster.co.nz/visits/?amount=1');
@@ -38,52 +47,56 @@ function Projects() {
   }, []);
 
   return (
-    <div id="proj">
-      <h2>Projects</h2>
-      <ul id="repo-list">
+    <Container sx={{ my: 4 }} id="proj">
+      <Typography variant="h4" gutterBottom>
+        Projects
+      </Typography>
+      <Box component="ul" sx={{ listStyle: 'none', p: 0 }}>
         {repos.map((repo) => {
           const rep = repo.name.split('-');
           const icon = getIcon(rep[1]);
           const linker = `https://github.com/Drammaster/${repo.name}`;
           return (
-            <li className="repo_item" key={repo.id}>
-              <a target="_blank" rel="noreferrer" href={linker}>
-                <div>
-                  <h3>
-                    {rep[0]} {icon}
-                  </h3>
-                  <p>{repo.description}</p>
-                </div>
-              </a>
-            </li>
+            <Box component="li" key={repo.id} sx={{ mb: 2 }}>
+              <Link href={linker} target="_blank" rel="noreferrer" underline="none">
+                <Typography variant="h6">
+                  {rep[0]} {icon}
+                </Typography>
+                <Typography variant="body2">{repo.description}</Typography>
+              </Link>
+            </Box>
           );
         })}
-      </ul>
-    </div>
+      </Box>
+    </Container>
   );
 }
 
 function About() {
   return (
-    <div id="aboutme">
-      <h2>About me</h2>
-      <div id="abouttext">
+    <Container sx={{ my: 4 }} id="aboutme">
+      <Typography variant="h4" gutterBottom>
+        About me
+      </Typography>
+      <Typography variant="body1" id="abouttext" paragraph>
         A passionate computer science graduate from the University of Auckland
         with 4 years of experience working as a climbing instructor as part of a
         large team fulfilling various roles. With many years of university
         experience working with Python, SQL, HTML, CSS, JavaScript and C#, I am
         now looking to start my career in IT as a software developer or
         SalesForce developer.
-      </div>
-    </div>
+      </Typography>
+    </Container>
   );
 }
 
 function SkillsTools() {
   return (
-    <div id="skill-tool">
-      <div id="skills">
-        <h2>Skills</h2>
+    <Container sx={{ my: 4 }} id="skill-tool">
+      <Typography variant="h4" gutterBottom>
+        Skills
+      </Typography>
+      <Box id="skills">
         <ul id="skills-list">
           {[
             'JavaScript',
@@ -106,10 +119,12 @@ function SkillsTools() {
             </li>
           ))}
         </ul>
-      </div>
+      </Box>
 
-      <div id="tools">
-        <h2>Tools</h2>
+      <Typography variant="h4" gutterBottom sx={{ mt: 4 }}>
+        Tools
+      </Typography>
+      <Box id="tools">
         <ul id="skills-list">
           {[
             'Jira',
@@ -128,22 +143,28 @@ function SkillsTools() {
             </li>
           ))}
         </ul>
-      </div>
-    </div>
+      </Box>
+    </Container>
   );
 }
 
 function Header() {
   return (
-    <header>
-      <div id="head-content">
-        <h1>Csaba Darazs</h1>
-        <a className="button" href="Csaba Darazs CV.pdf" target="_blank">
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          Csaba Darazs
+        </Typography>
+        <Button
+          color="inherit"
+          component="a"
+          href="Csaba Darazs CV.pdf"
+          target="_blank"
+        >
           View Resume
-        </a>
-      </div>
-      <div id="overlay"></div>
-    </header>
+        </Button>
+      </Toolbar>
+    </AppBar>
   );
 }
 
