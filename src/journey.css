@@ -1,0 +1,126 @@
+/*
+ * Longhand animation properties are used on purpose: the production minifier
+ * reorders declarations, and the `animation` shorthand would reset the
+ * timeline if it ended up last.
+ *
+ * Scroll "journey" effects, driven purely by CSS scroll timelines.
+ * Browsers without scroll-timeline support (and visitors who prefer reduced
+ * motion) simply see the page without animation.
+ */
+
+.scroll-progress {
+  display: none;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* Thin bar under the header that fills as you scroll the page. */
+    .scroll-progress {
+      display: block;
+      transform-origin: 0 50%;
+      animation-name: journey-grow-x;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: scroll(root);
+    }
+
+    /* Content rises and fades in as it enters the viewport. */
+    .reveal {
+      animation-name: journey-rise;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 28%;
+    }
+
+    /* The hero eases back as you scroll past it. */
+    .hero-copy {
+      animation-name: journey-hero-out;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: scroll(root);
+      animation-range: 0 70vh;
+    }
+
+    /* The line in each "Next stop" cue draws itself in. */
+    .cue-line {
+      transform-origin: 50% 0;
+      animation-name: journey-grow-y;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 45%;
+    }
+
+    /* The MythicVitals panel opens from a rounded card to full width. */
+    .mv-shell {
+      animation-name: journey-open-up;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 90%;
+    }
+
+    /* The two phone mockups drift past each other. */
+    .float-a {
+      animation-name: journey-float-a;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+
+    .float-b {
+      animation-name: journey-float-b;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bob {
+    animation: journey-bob 2.2s ease-in-out infinite;
+  }
+}
+
+@keyframes journey-rise {
+  from { opacity: 0; transform: translateY(48px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes journey-grow-x {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes journey-grow-y {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes journey-hero-out {
+  to { opacity: 0.15; transform: translateY(-60px) scale(0.97); }
+}
+
+@keyframes journey-open-up {
+  from { clip-path: inset(0 5% round 48px); }
+  to { clip-path: inset(0 0 round 0); }
+}
+
+@keyframes journey-float-a {
+  from { transform: rotate(-6deg) translate(20px, 70px); }
+  to { transform: rotate(-6deg) translate(20px, -50px); }
+}
+
+@keyframes journey-float-b {
+  from { transform: rotate(4deg) translate(-20px, 130px); }
+  to { transform: rotate(4deg) translate(-20px, -30px); }
+}
+
+@keyframes journey-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}

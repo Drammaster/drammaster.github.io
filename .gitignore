@@ -1,6 +1,10 @@
 node_modules
 build
 
+# local overrides (.env itself holds shared, non-secret build settings)
+.env.local
+.env.*.local
+
 # misc
 .DS_Store
-.env
+npm-debug.log*
