@@ -1,55 +1,45 @@
 # Portfolio
 
-This repository contains a personal portfolio page migrated to **React** using CDN imports. There is no need for Node.js or build tools – just open `index.html` in a browser.
+Personal portfolio for Csaba Darazs, built with **React**, **TypeScript** and **Material UI (MUI v7)**, and hosted on GitHub Pages at https://drammaster.github.io.
 
 ## Highlights
 
-- Structure rewritten as React components
-- GitHub API used to fetch repository list
-- Visitor counter via CountAPI
-- Icons from FontAwesome CDN
-- Original styles kept in `style.css`
+- One scrolling page that takes visitors on a journey: Hero → Who I am → MythicVitals → Work → Contact
+- Scroll effects (progress bar, reveal-on-scroll, "next stop" cues) built with CSS scroll timelines in `src/journey.css`; they switch off for visitors who prefer reduced motion
+- Sticky app bar with section links (collapses to a menu on mobile) and a resume link
+- Work section with Chrome extension / website filters; projects are listed in `src/components/work.tsx`
+- Responsive layout that works down to small phones
 
-## Usage
+## Project structure
 
-1. Clone or open the repository folder.
-2. **(Optional)** To keep the simple CDN-backed static site, open `index.html` in any modern browser; the React app will render automatically.
+```
+public/            static files copied as-is (index.html, CV PDF, favicon)
+src/
+  index.tsx        entry point – wraps the app in the MUI ThemeProvider
+  theme.ts         MUI theme and shared colour tokens
+  journey.css      scroll-driven animations
+  sections.ts      nav sections and shared links (email, GitHub, LinkedIn)
+  App.tsx          page layout and footer
+  components/      header, hero, about-me, skills, mythic-vitals, work, contact, ui
+docs/              production build served by GitHub Pages (generated – don't edit)
+```
 
-### Full development environment
+## Development
 
-If you'd like a proper npm-based React project with hot reload, follow these steps:
+Requires [Node.js](https://nodejs.org/) 18+.
 
-1. Install [Node.js](https://nodejs.org/) (which provides `npm`/`npx`).
-2. Open a terminal and navigate to this repo's root. Either:
+```bash
+npm install
+npm start          # dev server with hot reload at http://localhost:3000
+```
 
-   ```bash
-   # create inside current repo
-   npx create-react-app react-app --template javascript
-   ```
+## Deploying
 
-   or use the pre‑scaffolded files under `react-app/` provided with this repo.
+GitHub Pages serves the `docs/` folder on `master`. The build writes straight into `docs/` (configured via `BUILD_PATH` in `.env`), so to publish:
 
-3. Change directory and install dependencies:
+```bash
+npm run build
+git add docs && git commit -m "Build site" && git push
+```
 
-   ```bash
-   cd react-app
-   npm install
-   ```
-
-4. Start the development server:
-
-   ```bash
-   npm start
-   ```
-
-   The app will open at http://localhost:3000/ with hot reload.
-
-5. To build a production bundle, run `npm run build`.
-
-
-The `react-app` folder contains an example package.json, a `public/` index.html, and a `src/` directory with the same components you saw in the CDN version. You can copy over `style.css` or add more assets as needed.
-
-In short: you can continue using the simple `index.html` standalone site, or move into `react-app` for a full React development workflow.
-
-> ⚠️ For a full React development environment (with hot reload/build), install Node.js and consider scaffolding the project with `create-react-app` or Vite. This copy intentionally avoids a build step.
-
+To update the resume, replace `public/Csaba Darazs CV.pdf` and rebuild.

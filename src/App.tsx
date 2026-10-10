@@ -1,100 +1,58 @@
-import {
-  AppBar,
-  Button,
-  Fade,
-  Menu,
-  MenuItem,
-  Toolbar,
-  Typography,
-} from "@mui/material";
-import React, { ReactElement, useEffect } from "react";
+import { Box, Link, Typography } from "@mui/material";
+import { ReactElement } from "react";
 import About from "./components/about-me";
-import Skills from "./components/skills/skills";
-import "./styles/style.css";
+import Contact from "./components/contact";
+import Header from "./components/header";
+import Hero from "./components/hero";
+import MythicVitals from "./components/mythic-vitals";
+import { container, JourneyCue } from "./components/ui";
+import Work from "./components/work";
+import { colors } from "./theme";
 
-import MenuIcon from "@mui/icons-material/Menu";
-
-function visitorCount(): void {
-  fetch("https://api.countapi.xyz/update/drammaster.co.nz/visits/?amount=1");
-}
-
-function Header(): ReactElement {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+function Footer(): ReactElement {
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          Csaba Darazs
+    <Box component="footer" sx={{ borderTop: `1px solid ${colors.line}` }}>
+      <Box
+        sx={{
+          ...container,
+          py: 3,
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-between",
+          alignItems: "center",
+          gap: "8px 16px",
+        }}
+      >
+        <Typography sx={{ fontSize: 14, color: colors.muted }}>
+          © {new Date().getFullYear()} Csaba Darazs · Auckland, New Zealand
         </Typography>
-        <div>
-          <Button
-            variant="outlined"
-            color="inherit"
-            id="fade-button"
-            startIcon={<MenuIcon />}
-            aria-controls={open ? "fade-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-            onClick={handleClick}
-          />
-          <Menu
-            id="fade-menu"
-            slotProps={{
-              list: {
-                "aria-labelledby": "fade-button",
-              },
-            }}
-            slots={{ transition: Fade }}
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-          >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
-          </Menu>
-        </div>
-        {/* <Button
-          variant="outlined"
-          startIcon={<InsertDriveFile />}
-          color="inherit"
-          component="a"
-          href="Csaba Darazs CV.pdf"
-          target="_blank"
+        <Link
+          href="#top"
+          underline="none"
+          sx={{ minHeight: 44, display: "inline-flex", alignItems: "center", fontSize: 14, fontWeight: 500, color: colors.muted }}
         >
-          View Resume
-        </Button> */}
-      </Toolbar>
-    </AppBar>
-  );
-}
-
-function Main(): ReactElement {
-  return (
-    <main>
-      <About />
-      <Skills />
-    </main>
+          Back to top ↑
+        </Link>
+      </Box>
+    </Box>
   );
 }
 
 function App(): ReactElement {
-  useEffect(() => {
-    visitorCount();
-  }, []);
-
   return (
-    <>
+    <Box id="top">
       <Header />
-      <Main />
-    </>
+      <main>
+        <Hero />
+        <About />
+        <MythicVitals />
+        <JourneyCue label="Next: what I build for other businesses" />
+        <Work />
+        <JourneyCue label="Last stop: let's work together" />
+        <Contact />
+      </main>
+      <Footer />
+    </Box>
   );
 }
 

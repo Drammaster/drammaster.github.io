@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2015",
     "lib": [
-      "es6",
       "dom",
-      "dom.iterable"
+      "dom.iterable",
+      "esnext"
     ],
     "jsx": "react-jsx",
     "module": "esnext",
@@ -26,10 +26,8 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "outDir": "./dist"
+    "isolatedModules": true,
+    "noEmit": true
   },
   "include": [
     "src"
@@ -37,7 +35,6 @@
   "exclude": [
     "node_modules",
     "build",
-    "dist",
     "docs"
   ]
 }
